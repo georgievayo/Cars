@@ -38,9 +38,15 @@ namespace Cars.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult GetCars(SearchViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Error");
+            }
+
             return this.RedirectToAction("GetCars", new {id = model.OwnerId});
         }
 
+        // GET /Home/GetCars/{id}
         [HttpGet]
         public ActionResult GetCars(int id)
         {
