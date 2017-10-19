@@ -1,0 +1,59 @@
+﻿@model ICollection<Cars.Web.Models.CarViewModel>
+@{
+    ViewBag.Title = "Search result";
+}
+@if (Model.Count > 0)
+{
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-2">
+                <p>Car Id</p>
+            </div>
+            <div class="col-md-2">
+                <p>Owner Id</p>
+            </div>
+            <div class="col-md-2">
+                <p>Owner Name</p>
+            </div>
+            <div class="col-md-2">
+                <p>Model Id</p>
+            </div>
+            <div class="col-md-2">
+                <p>Model Description</p>
+            </div>
+            <div class="col-md-2">
+                <p>Car Description</p>
+            </div>
+        </div>
+        <hr />
+        @foreach (var car in Model)
+        {
+        <div class="row">
+            <div class="col-md-2">
+                <p>@car.Id</p>
+            </div>
+            <div class="col-md-2">
+                <p>@car.OwnerId</p>
+            </div>
+            <div class="col-md-2">
+                <p>@car.OwnerName</p>
+            </div>
+            <div class="col-md-2">
+                <p>@car.ModelId</p>
+            </div>
+            <div class="col-md-2">
+                <p>@car.ModelDescription</p>
+            </div>
+            <div class="col-md-2">
+                <p>@car.Description</p>
+            </div>
+        </div>
+        }
+    </div>
+}
+else
+{
+    <div class="jumbotron">
+        <p>There is no car.</p>
+    </div>
+}

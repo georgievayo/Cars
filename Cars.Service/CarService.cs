@@ -29,7 +29,7 @@ namespace Cars.Service
             this.unitOfWork = unitOfWork;
         }
 
-        public ICollection<Car> GetCarsByOwnerId(Guid? ownerId)
+        public ICollection<Car> GetCarsByOwnerId(int? ownerId)
         {
             return this.repository
                 .All

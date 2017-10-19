@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Cars.Models
 {
     public class CarModel
     {
-        public Guid Id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         public string Description { get; set; }
 

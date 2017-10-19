@@ -1,16 +1,17 @@
-﻿using System;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Cars.Models
 {
     public class Car
     {
-        public Guid Id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
-        public Guid? OwnerId { get; set; }
+        public int? OwnerId { get; set; }
 
         public virtual Owner Owner { get; set; }
 
-        public Guid? ModelId { get; set; }
+        public int? ModelId { get; set; }
 
         public virtual CarModel Model { get; set; }
 

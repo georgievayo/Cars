@@ -19,7 +19,7 @@ namespace Cars.Service.Test
 
             var service = new CarService(repositoryMock.Object, unitOfWorkMock.Object);
 
-            var ownerId = Guid.NewGuid();
+            var ownerId = 1;
 
             service.GetCarsByOwnerId(ownerId);
 
@@ -34,7 +34,7 @@ namespace Cars.Service.Test
 
             var service = new CarService(repositoryMock.Object, unitOfWorkMock.Object);
 
-            var ownerId = Guid.NewGuid();
+            var ownerId = 1;
             var allCars = new List<Car>()
             {
                 new Car()
@@ -43,7 +43,7 @@ namespace Cars.Service.Test
                 },
                 new Car()
                 {
-                    OwnerId = Guid.NewGuid()
+                    OwnerId = 2
                 }
             };
 

@@ -1,30 +1,55 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using Cars.Service.Contracts;
+using Cars.Web.Factory;
+using Cars.Web.Models;
 
 namespace Cars.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ICarService service;
+        private readonly IViewModelFactory factory;
+
+        public HomeController(ICarService service, IViewModelFactory factory)
+        {
+            if (service == null)
+            {
+                throw new ArgumentNullException(nameof(service));
+            }
+
+            if (factory == null)
+            {
+                throw new ArgumentNullException(nameof(factory));
+            }
+
+            this.service = service;
+            this.factory = factory;
+        }
+
+        // GET /Home/Index
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GetCars(SearchViewModel model)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return this.RedirectToAction("GetCars", new {id = model.OwnerId});
         }
 
-        public ActionResult Contact()
+        [HttpGet]
+        public ActionResult GetCars(int id)
         {
-            ViewBag.Message = "Your contact page.";
+            var model = this.service.GetCarsByOwnerId(id)
+                .Select(car => this.factory.CreateCarViewModel(car.Id, car.OwnerId, car.Owner.FullName,
+                        car.ModelId, car.Model.Description, car.Description))
+                .ToList();
 
-            return View();
+            return View("CarsList", model);
         }
     }
 }

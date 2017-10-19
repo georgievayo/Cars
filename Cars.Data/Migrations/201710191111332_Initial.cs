@@ -1,5 +1,6 @@
 namespace Cars.Data.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
     
     public partial class Initial : DbMigration
@@ -10,7 +11,7 @@ namespace Cars.Data.Migrations
                 "dbo.CarModels",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         Description = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
@@ -19,9 +20,9 @@ namespace Cars.Data.Migrations
                 "dbo.Cars",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
-                        OwnerId = c.Guid(),
-                        ModelId = c.Guid(),
+                        Id = c.Int(nullable: false, identity: true),
+                        OwnerId = c.Int(),
+                        ModelId = c.Int(),
                         Description = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -34,7 +35,7 @@ namespace Cars.Data.Migrations
                 "dbo.Owners",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         FullName = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
