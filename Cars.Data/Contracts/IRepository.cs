@@ -16,4 +16,3 @@ namespace Cars.Data.Contracts
             void Delete(T entity);
         }
 }
-}
