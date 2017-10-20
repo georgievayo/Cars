@@ -19,14 +19,12 @@ namespace Cars.Web.Test
 
             var controller = new HomeController(serviceMock.Object, factoryMock.Object);
             controller.ModelState.AddModelError("key", "message");
-            var model = new SearchViewModel()
-            {
-                OwnerId = -5
-            };
+            var model = new SearchViewModel();
 
             controller
                 .WithCallTo(c => c.GetCars(model))
-                .ShouldRenderView("Error");
+                .ShouldRenderView("Index")
+                .WithModel(model);
         }
 
         [TestCase(1)]

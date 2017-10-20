@@ -48,6 +48,7 @@ namespace Cars.Web.Controllers
 
         // GET /Home/GetCars/{id}
         [HttpGet]
+        [HandleError()]
         public ActionResult GetCars(int id)
         {
             var model = this.service.GetCarsByOwnerId(id)
