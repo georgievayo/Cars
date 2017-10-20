@@ -40,7 +40,7 @@ namespace Cars.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("Error");
+                return View("Index", model);
             }
 
             return this.RedirectToAction("GetCars", new {id = model.OwnerId});

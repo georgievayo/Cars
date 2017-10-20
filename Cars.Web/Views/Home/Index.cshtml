@@ -3,13 +3,18 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+<div class="jumbotron" id="search">
+    <h2>Search cars by owner's id</h2>
     @using (Html.BeginForm("GetCars", "Home"))
-    { 
+    {
         @Html.AntiForgeryToken()
-        <div class="form-group">
-            @Html.EditorFor(x => x.OwnerId, new { htmlAttributes = new { @class = "input form-control col-md-3", placeholder = "Enter owner's id..." } })
+        <div class="form-group col-md-offset-4">
+            @Html.EditorFor(x => x.OwnerId, new {htmlAttributes = new {@class = "input form-control col-md-3", placeholder = "Enter owner's id..."}})
             <button type="submit" class="btn col-md-1"><span class="glyphicon glyphicon-search"></span> Search</button>
+        </div>
+        <br />
+        <div class="col-md-offset-4">
+            @Html.ValidationMessageFor(model => model.OwnerId, null, new { @class = "text-danger" })
         </div>
     }
 </div>

@@ -19,32 +19,12 @@ namespace Cars.Data
             this.dbContext = dbContext;
         }
 
-        public T GetById(object id)
-        {
-            return this.dbContext.DbSet<T>().Find(id);
-        }
-
         public IQueryable<T> All
         {
             get
             {
                 return this.dbContext.DbSet<T>();
             }
-        }
-
-        public void Add(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(T entity)
-        {
-            throw new NotImplementedException();
         }
     }
 }
