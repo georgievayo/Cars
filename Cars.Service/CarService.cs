@@ -31,6 +31,11 @@ namespace Cars.Service
 
         public ICollection<Car> GetCarsByOwnerId(int? ownerId)
         {
+            if (ownerId == null)
+            {
+                throw new ArgumentNullException("Owner id cannot be null");
+            }
+
             return this.repository
                 .All
                 .Include(c => c.Model)

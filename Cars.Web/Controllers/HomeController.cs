@@ -52,8 +52,7 @@ namespace Cars.Web.Controllers
         public ActionResult GetCars(int id)
         {
             var model = this.service.GetCarsByOwnerId(id)
-                .Select(car => this.factory.CreateCarViewModel(car.Id, car.OwnerId, car.Owner.FullName,
-                        car.ModelId, car.Model.Description, car.Description))
+                .Select(car => this.factory.CreateCarViewModel(car))
                 .ToList();
 
             return View("CarsList", model);

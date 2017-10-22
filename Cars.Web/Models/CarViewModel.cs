@@ -1,16 +1,17 @@
-﻿namespace Cars.Web.Models
+﻿using Cars.Models;
+
+namespace Cars.Web.Models
 {
     public class CarViewModel
     {
-        public CarViewModel(int id, int? ownerId, string ownerName, int? modelId, 
-            string modelDsc, string description)
+        public CarViewModel(Car car)
         {
-            this.Id = id;
-            this.OwnerId = ownerId;
-            this.OwnerName = ownerName;
-            this.ModelId = modelId;
-            this.ModelDescription = modelDsc;
-            this.Description = description;
+            this.Id = car.Id;
+            this.OwnerId = car.OwnerId;
+            this.OwnerName = car.Owner.FullName;
+            this.ModelId = car.ModelId;
+            this.ModelDescription = car.Model.Description;
+            this.Description = car.Description;
         }
 
         public int Id { get; set; }
